@@ -50,7 +50,7 @@ var Gravatar = React.createClass({
 
 var App = React.createClass({
   render (){
-  var users = USERS.map(user => {return(<li><Gravatar email={user.email} size={36} />user.name</li>)});
+  var users = USERS.map(user => {return(<li key={user.id}><Gravatar email={user.email} size={36} />user.name</li>)});
     return (
       <div>
       <h1>Users</h1>
