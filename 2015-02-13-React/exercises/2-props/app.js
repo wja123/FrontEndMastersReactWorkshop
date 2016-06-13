@@ -23,15 +23,20 @@ var warning = require('react/lib/warning');
 
 var GRAVATAR_URL = "http://gravatar.com/avatar";
 
-var USERS = [{id: 1, name: 'Ryan Florence', email: 'rpflorencegmail.com'},{id: 2, name: 'Michael Jackson', email: 'mjijackson@gmail.com'}];
+var USERS = [{id: 1, name: 'Ryan Florence', email: 'rpflorence@gmail.com'},{id: 2, name: 'Michael Jackson', email: 'mjijackson@gmail.com'}];
 
 var emailType = (props, propName, componentName) => {
   warning(validateEmail(props.email), `Invalid email '${props.email}' sent to 'Gravatar'. Check the render method of ${componentName}'.`);
 };
 
+var sizeType = (props, propName, componentName) => {
+  warning(!isNaN(parseInt(props.size)), `Invalid size '${props.size} sent to 'Gravatar'. Check the render method of '${componentName}'.`)
+};
+
 var Gravatar = React.createClass({
   propTypes: {
-    email: emailType
+    email: emailType,
+    size: sizeType
   },
   getDefaultProps(){
     return {
